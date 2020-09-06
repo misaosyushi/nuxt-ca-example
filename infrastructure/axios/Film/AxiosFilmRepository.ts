@@ -1,6 +1,5 @@
+import { Films, IFilmRepository } from '@/domain/Film'
 import { AxiosResponse } from 'axios'
-import { Films } from '@/domain/Film/Films'
-import { IFilmRepository } from '@/domain/Film/IFilmRepository'
 import axios from '../axiosConfig'
 
 export class AxiosFilmRepository implements IFilmRepository {

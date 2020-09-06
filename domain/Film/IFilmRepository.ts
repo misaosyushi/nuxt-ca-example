@@ -1,4 +1,4 @@
-import { Films } from '@/domain/Film/Films'
+import { Films } from './Films'
 
 export interface IFilmRepository {
   getAll(): Promise<Films>

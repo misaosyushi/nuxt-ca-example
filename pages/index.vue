@@ -53,7 +53,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { AxiosFilmRepository } from '@/infrastructure/axios/Film/AxiosFilmRepository'
+import { AxiosFilmRepository } from '@/infrastructure/axios/Film'
 
 export default defineComponent({
   setup() {
