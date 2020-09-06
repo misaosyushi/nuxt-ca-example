@@ -1,5 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
 
+require('dotenv').config()
+console.info('API base url: ', process.env.NUXT_ENV_BASE_URL)
+
 export default {
   /*
    ** Nuxt rendering mode
