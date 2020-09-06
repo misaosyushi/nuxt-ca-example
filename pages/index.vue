@@ -51,14 +51,14 @@
   </v-layout>
 </template>
 
-<script>
-import Logo from '@/components/Logo.vue'
-import VuetifyLogo from '@/components/VuetifyLogo.vue'
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+import { AxiosFilmRepository } from '@/infrastructure/axios/Film/AxiosFilmRepository'
 
-export default {
-  components: {
-    Logo,
-    VuetifyLogo,
+export default defineComponent({
+  setup() {
+    const repository = new AxiosFilmRepository()
+    console.log(repository.getAll().then((data) => data.results))
   },
-}
+})
 </script>
