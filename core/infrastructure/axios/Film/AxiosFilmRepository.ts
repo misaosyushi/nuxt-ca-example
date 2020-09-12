@@ -1,4 +1,4 @@
-import { Films, IFilmRepository } from '@/core/domain/Film'
+import { Films, IFilmRepository } from '@/core/domain/domain/Film'
 import { AxiosResponse } from 'axios'
 import axios from '../axiosConfig'
 

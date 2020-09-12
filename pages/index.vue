@@ -54,11 +54,14 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { AxiosFilmRepository } from '@/core/infrastructure/axios/Film'
+import { FilmGetInteractor } from '@/core/domain/application/Film/FilmGetInteractor'
 
+// TODO: IFilmRepositoryに依存させる
 export default defineComponent({
   setup() {
     const repository = new AxiosFilmRepository()
-    console.log(repository.getAll().then((data) => data.results))
+    const interactor = new FilmGetInteractor(repository)
+    console.log(interactor.handle().then((data) => data.results))
   },
 })
 </script>
