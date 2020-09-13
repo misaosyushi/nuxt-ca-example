@@ -1,7 +1,7 @@
-import { IFilmGetPresenter } from '@/core/usecase/Film/Get'
+import { IFilmListPresenter } from '@/core/usecase/Film/List'
 import { Film, Films } from '@/core/domain/domain/Film'
 
-export class FilmGetPresenter implements IFilmGetPresenter {
+export class FilmListPresenter implements IFilmListPresenter {
   sortByEpisodeId(results: Film[]): Films {
     return new Films(
       results.sort((a, b) => {

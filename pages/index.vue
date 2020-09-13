@@ -56,8 +56,8 @@ import { defineComponent, SetupContext, watchEffect } from '@vue/composition-api
 
 export default defineComponent({
   setup(_, context: SetupContext) {
-    const interactor = context.root.$filmGetInteractor()
-    const presenter = context.root.$filmGetPresenter()
+    const interactor = context.root.$filmListInteractor()
+    const presenter = context.root.$filmListPresenter()
 
     watchEffect(async () => {
       const res = await interactor.handle()

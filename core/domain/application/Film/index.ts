@@ -1,1 +1,1 @@
-export { FilmGetInteractor } from './FilmGetInteractor'
+export { FilmListInteractor } from './FilmListInteractor'

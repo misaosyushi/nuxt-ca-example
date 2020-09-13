@@ -1,30 +1,30 @@
 import { Plugin } from '@nuxt/types'
 import { AxiosFilmRepository } from '@/core/infrastructure/axios/Film'
-import { FilmGetInteractor } from '@/core/domain/application/Film/FilmGetInteractor'
-import { FilmGetPresenter } from '@/core/presenter/Film/FilmGetPresenter'
+import { FilmListInteractor } from '@/core/domain/application/Film'
+import { FilmListPresenter } from '@/core/presenter/Film'
 
 declare module '@nuxt/types' {
   interface Context {
-    $filmGetInteractor(): FilmGetInteractor
-    $filmGetPresenter(): FilmGetPresenter
+    $filmListInteractor(): FilmListInteractor
+    $filmListPresenter(): FilmListPresenter
   }
 }
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $filmGetInteractor(): FilmGetInteractor
-    $filmGetPresenter(): FilmGetPresenter
+    $filmListInteractor(): FilmListInteractor
+    $filmListPresenter(): FilmListPresenter
   }
 }
 
 const myPlugin: Plugin = (context, inject) => {
   // Nuxtのcontextへのインジェクト
-  context.$filmGetInteractor = () => new FilmGetInteractor(new AxiosFilmRepository())
-  context.$filmGetPresenter = () => new FilmGetPresenter()
+  context.$filmListInteractor = () => new FilmListInteractor(new AxiosFilmRepository())
+  context.$filmListPresenter = () => new FilmListPresenter()
 
   // Vueインスタンスへのインジェクト
-  inject('filmGetInteractor', () => new FilmGetInteractor(new AxiosFilmRepository()))
-  inject('filmGetPresenter', () => new FilmGetPresenter())
+  inject('filmListInteractor', () => new FilmListInteractor(new AxiosFilmRepository()))
+  inject('filmListPresenter', () => new FilmListPresenter())
 }
 
 export default myPlugin

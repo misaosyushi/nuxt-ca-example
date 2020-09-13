@@ -1,1 +1,1 @@
-export { FilmGetPresenter } from './FilmGetPresenter'
+export { FilmListPresenter } from './FilmListPresenter'
