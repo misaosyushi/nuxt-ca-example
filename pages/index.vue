@@ -52,16 +52,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, watchEffect } from '@vue/composition-api'
 import { AxiosFilmRepository } from '@/core/infrastructure/axios/Film'
-import { FilmGetInteractor } from '@/core/domain/application/Film/FilmGetInteractor'
+import { FilmGetInteractor } from '@/core/domain/application/Film'
+import { FilmGetPresenter } from '@/core/presenter/Film'
 
-// TODO: IFilmRepositoryに依存させる
 export default defineComponent({
   setup() {
-    const repository = new AxiosFilmRepository()
-    const interactor = new FilmGetInteractor(repository)
-    console.log(interactor.handle().then((data) => data.results))
+    watchEffect(async () => {
+      const interactor = new FilmGetInteractor(new AxiosFilmRepository())
+      const res = await interactor.handle()
+      const presenter = new FilmGetPresenter(res.results)
+      console.log(presenter.sortByEpisodeId())
+    })
   },
 })
 </script>

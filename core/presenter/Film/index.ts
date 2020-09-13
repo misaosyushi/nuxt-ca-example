@@ -1,0 +1,1 @@
+export { FilmGetPresenter } from './FilmGetPresenter'
