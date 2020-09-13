@@ -1,5 +1,5 @@
-import { Films } from '@/core/domain/domain/Film'
+import { Film, Films } from '@/core/domain/domain/Film'
 
 export interface IFilmGetPresenter {
-  sortByEpisodeId(): Films
+  sortByEpisodeId(results: Film[]): Films
 }
