@@ -1,18 +1,18 @@
-export class episodeId {
+export class EpisodeId {
   readonly value: number
   constructor(value: number) {
     this.value = value
   }
 }
 
-export class title {
+export class Title {
   readonly value: string
   constructor(value: string) {
     this.value = value
   }
 }
 
-export class openingCrawl {
+export class OpeningCrawl {
   readonly value: string
   constructor(value: string) {
     this.value = value

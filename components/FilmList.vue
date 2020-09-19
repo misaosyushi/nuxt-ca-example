@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, SetupContext, watchEffect, ref, reactive } from '@vue/composition-api'
-import { Film, Films } from '@/core/domain/domain/Film'
+import { Film, Films, EpisodeId } from '@/core/domain/domain/Film'
 
 export default defineComponent({
   setup(_, context: SetupContext) {
@@ -41,10 +41,11 @@ export default defineComponent({
 
     watchEffect(async () => {
       const res: Films = await interactor.handle()
-      films.value = presenter.sortByEpisodeId(res.results)
+      films.value = presenter.toOutputData(presenter.sortByEpisodeId(res.results))
+      console.log(films.value)
     })
 
-    function favorite(episodeId: number) {
+    function favorite(episodeId: EpisodeId) {
       console.log('hoge', episodeId)
     }
 

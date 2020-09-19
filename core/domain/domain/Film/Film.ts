@@ -1,11 +1,11 @@
-import { episodeId, title, openingCrawl } from '@/core/domain/domain/Film/vo'
+import { EpisodeId, Title, OpeningCrawl } from '@/core/domain/domain/Film/vo'
 
 export class Film {
-  readonly episodeId: episodeId
-  readonly title: title
-  readonly openingCrawl: openingCrawl
+  readonly episodeId: EpisodeId
+  readonly title: Title
+  readonly openingCrawl: OpeningCrawl
 
-  constructor(episodeId: episodeId, title: title, openingCrawl: openingCrawl) {
+  constructor(episodeId: EpisodeId, title: Title, openingCrawl: OpeningCrawl) {
     this.episodeId = episodeId
     this.title = title
     this.openingCrawl = openingCrawl
