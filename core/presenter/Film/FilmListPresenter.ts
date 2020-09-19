@@ -13,7 +13,7 @@ export class FilmListPresenter implements IFilmListPresenter {
     })
   }
 
-  sortByEpisodeId(films: Film[]): Film[] {
+  sortByEpisodeId(films: FilmOutputData[]): FilmOutputData[] {
     return films.sort((a, b) => {
       if (a.episodeId < b.episodeId) return -1
       if (a.episodeId > b.episodeId) return 1

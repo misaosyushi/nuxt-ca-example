@@ -29,11 +29,12 @@
 
 <script lang="ts">
 import { defineComponent, SetupContext, watchEffect, ref, reactive } from '@vue/composition-api'
-import { Film, Films, EpisodeId } from '@/core/domain/domain/Film'
+import { Films, EpisodeId } from '@/core/domain/domain/Film'
+import { FilmOutputData } from '@/core/usecase/Film/List'
 
 export default defineComponent({
   setup(_, context: SetupContext) {
-    const films = ref<Film[]>([])
+    const films = ref<FilmOutputData[]>([])
     const selected = reactive<number[]>([])
 
     const interactor = context.root.$filmListInteractor()
@@ -41,10 +42,11 @@ export default defineComponent({
 
     watchEffect(async () => {
       const res: Films = await interactor.handle()
-      films.value = presenter.toOutputData(presenter.sortByEpisodeId(res.results))
+      films.value = presenter.sortByEpisodeId(presenter.toOutputData(res.results))
       console.log(films.value)
     })
 
+    // TODO: お気に入りをローカルストレージに保存
     function favorite(episodeId: EpisodeId) {
       console.log('hoge', episodeId)
     }
