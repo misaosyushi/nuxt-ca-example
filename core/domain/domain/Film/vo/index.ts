@@ -11,3 +11,10 @@ export class title {
     this.value = value
   }
 }
+
+export class openingCrawl {
+  readonly value: string
+  constructor(value: string) {
+    this.value = value
+  }
+}

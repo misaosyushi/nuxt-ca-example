@@ -50,9 +50,11 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+  setup() {
     return {
       clipped: false,
       drawer: false,
@@ -72,8 +74,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js',
+      title: 'Nuxt.js + Clean Architecture example',
     }
   },
-}
+})
 </script>
