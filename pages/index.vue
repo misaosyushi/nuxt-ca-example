@@ -1,10 +1,6 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
       <v-card>
         <v-card-title class="headline"> Welcome to the Vuetify + Nuxt.js template </v-card-title>
         <v-card-text>
@@ -42,6 +38,11 @@
           <br />
           <a href="https://github.com/nuxt/nuxt.js" target="_blank" rel="noopener noreferrer"> Nuxt GitHub </a>
         </v-card-text>
+        <v-list-item v-for="(film, i) in films" :key="i">
+          <v-list-item-content>
+            <v-list-item-title>{{ film.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-card-actions>
           <v-spacer />
           <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
@@ -52,17 +53,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext, watchEffect } from '@vue/composition-api'
+import { defineComponent, SetupContext, watchEffect, ref } from '@vue/composition-api'
+import { Film } from '@/core/domain/domain/Film'
 
 export default defineComponent({
   setup(_, context: SetupContext) {
+    const films = ref<Film[]>([])
+
     const interactor = context.root.$filmListInteractor()
     const presenter = context.root.$filmListPresenter()
 
     watchEffect(async () => {
       const res = await interactor.handle()
-      console.log(presenter.sortByEpisodeId(res.results))
+      films.value = presenter.sortByEpisodeId(res.results)
+      console.log(films.value)
     })
+
+    return {
+      films,
+    }
   },
 })
 </script>
