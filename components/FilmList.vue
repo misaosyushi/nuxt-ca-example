@@ -8,7 +8,7 @@
             <v-list-item :key="item.title">
               <template v-slot:default="{ active }">
                 <v-list-item-content>
-                  <v-list-item-title>{{ item.title + ' ' + item.releaseDate }}</v-list-item-title>
+                  <v-list-item-title>{{ item.title + '&nbsp;&nbsp;' + item.releaseDate }}</v-list-item-title>
                   <v-list-item-subtitle>{{ item.openingCrawl }}</v-list-item-subtitle>
                 </v-list-item-content>
 
@@ -43,7 +43,6 @@ export default defineComponent({
     watchEffect(async () => {
       const res: Films = await interactor.handle()
       films.value = presenter.sortByEpisodeId(presenter.toViewModel(res.results))
-      console.log(films.value)
     })
 
     return {
