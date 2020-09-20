@@ -28,14 +28,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext, watchEffect, ref, reactive } from '@vue/composition-api'
+import { defineComponent, SetupContext, watchEffect, ref } from '@vue/composition-api'
 import { Films } from '@/core/domain/domain/Film'
 import { FilmListViewModel } from '@/core/presenter/Film/FilmListViewModel'
 
 export default defineComponent({
   setup(_, context: SetupContext) {
     const films = ref<FilmListViewModel[]>([])
-    const selected = reactive<number[]>([])
+    const selected = ref<number[]>([])
 
     const interactor = context.root.$filmListInteractor()
     const presenter = context.root.$filmListPresenter()
