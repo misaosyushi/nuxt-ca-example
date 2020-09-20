@@ -5,11 +5,11 @@
       <v-list three-line>
         <v-list-item-group v-model="selected" multiple active-class="pink--text">
           <template v-for="(item, index) in films">
-            <v-list-item :key="item.title" @click="favorite(item.episodeId)">
+            <v-list-item :key="item.title">
               <template v-slot:default="{ active }">
                 <v-list-item-content>
-                  <v-list-item-title v-text="item.title"></v-list-item-title>
-                  <v-list-item-subtitle v-text="item.openingCrawl"></v-list-item-subtitle>
+                  <v-list-item-title>{{ item.title + ' ' + item.releaseDate }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ item.openingCrawl }}</v-list-item-subtitle>
                 </v-list-item-content>
 
                 <v-list-item-action>
@@ -29,12 +29,12 @@
 
 <script lang="ts">
 import { defineComponent, SetupContext, watchEffect, ref, reactive } from '@vue/composition-api'
-import { Films, EpisodeId } from '@/core/domain/domain/Film'
-import { FilmOutputData } from '@/core/usecase/Film/List'
+import { Films } from '@/core/domain/domain/Film'
+import { FilmListViewModel } from '@/core/presenter/Film/FilmListViewModel'
 
 export default defineComponent({
   setup(_, context: SetupContext) {
-    const films = ref<FilmOutputData[]>([])
+    const films = ref<FilmListViewModel[]>([])
     const selected = reactive<number[]>([])
 
     const interactor = context.root.$filmListInteractor()
@@ -42,19 +42,13 @@ export default defineComponent({
 
     watchEffect(async () => {
       const res: Films = await interactor.handle()
-      films.value = presenter.sortByEpisodeId(presenter.toOutputData(res.results))
+      films.value = presenter.sortByEpisodeId(presenter.toViewModel(res.results))
       console.log(films.value)
     })
-
-    // TODO: お気に入りをローカルストレージに保存
-    function favorite(episodeId: EpisodeId) {
-      console.log('hoge', episodeId)
-    }
 
     return {
       films,
       selected,
-      favorite,
     }
   },
 })

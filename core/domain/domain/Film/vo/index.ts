@@ -18,3 +18,10 @@ export class OpeningCrawl {
     this.value = value
   }
 }
+
+export class ReleaseDate {
+  readonly value: string
+  constructor(value: string) {
+    this.value = value
+  }
+}
