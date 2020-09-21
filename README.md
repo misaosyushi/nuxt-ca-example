@@ -1,8 +1,16 @@
 # nuxt-ca-example
 
+This is a sample project that implements a clean architecture with Nuxt.js.  
+
+I am using SWAPI as an example of API integration.  
+https://swapi.dev/
+
 ## Build Setup
 
 ```bash
+# Create .env file.
+$ cp .env.sample .env
+
 # install dependencies
 $ npm install
 
