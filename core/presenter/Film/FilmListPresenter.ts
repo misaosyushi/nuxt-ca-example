@@ -1,6 +1,6 @@
 import { IFilmListPresenter } from '@/core/interface/presenter/Film'
 import { Film } from '@/core/domain/domain/Film'
-import { FilmListInteractor } from '@/core/domain/application/Film'
+import { FilmListInteractor } from '@/core/usecase/Film/List'
 import { FilmListViewModel } from './FilmListViewModel'
 
 export class FilmListPresenter implements IFilmListPresenter {

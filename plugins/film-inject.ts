@@ -1,6 +1,6 @@
 import { Plugin } from '@nuxt/types'
 import { AxiosFilmRepository } from '@/core/infrastructure/axios/Film'
-import { FilmListInteractor } from '@/core/domain/application/Film'
+import { FilmListInteractor } from '@/core/usecase/Film/List'
 import { FilmListPresenter } from '@/core/presenter/Film'
 
 declare module '@nuxt/types' {
