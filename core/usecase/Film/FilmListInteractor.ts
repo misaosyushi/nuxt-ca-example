@@ -1,5 +1,5 @@
 import { IFilmListUseCase } from '@/core/interface/usecase/Film'
-import { Films } from '@/core/domain/domain/Film'
+import { Films } from '@/core/domain/Film'
 import { IFilmRepository } from '@/core/interface/repository/Film'
 
 export class FilmListInteractor implements IFilmListUseCase {

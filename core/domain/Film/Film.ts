@@ -1,4 +1,4 @@
-import { EpisodeId, Title, OpeningCrawl, ReleaseDate } from '@/core/domain/domain/Film/vo'
+import { EpisodeId, Title, OpeningCrawl, ReleaseDate } from './vo'
 
 export class Film {
   readonly episodeId: EpisodeId
