@@ -1,5 +1,6 @@
-import { IFilmListUseCase } from '@/core/usecase/Film/List'
-import { Films, IFilmRepository } from '@/core/domain/domain/Film'
+import { IFilmListUseCase } from '@/core/interface/usecase/Film'
+import { Films } from '@/core/domain/domain/Film'
+import { IFilmRepository } from '@/core/interface/repository/Film'
 
 export class FilmListInteractor implements IFilmListUseCase {
   private readonly repository: IFilmRepository

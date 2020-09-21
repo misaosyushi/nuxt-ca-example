@@ -1,0 +1,1 @@
+export { IFilmRepository } from './IFilmRepository'
