@@ -29,7 +29,6 @@
 
 <script lang="ts">
 import { defineComponent, SetupContext, watchEffect, ref } from '@vue/composition-api'
-import { Films } from '@/core/domain/domain/Film'
 import { FilmListViewModel } from '@/core/presenter/Film/FilmListViewModel'
 
 export default defineComponent({
@@ -37,12 +36,11 @@ export default defineComponent({
     const films = ref<FilmListViewModel[]>([])
     const selected = ref<number[]>([])
 
-    const interactor = context.root.$filmListInteractor()
     const presenter = context.root.$filmListPresenter()
 
     watchEffect(async () => {
-      const res: Films = await interactor.handle()
-      films.value = presenter.sortByEpisodeId(presenter.toViewModel(res.results))
+      const res: FilmListViewModel[] = await presenter.execute()
+      films.value = presenter.sortByEpisodeId(res)
     })
 
     return {

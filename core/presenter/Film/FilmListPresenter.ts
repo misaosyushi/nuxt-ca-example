@@ -1,10 +1,18 @@
-import { IFilmListOutputBoundary } from '@/core/usecase/Film/List'
+import { IFilmListPresenter } from '@/core/usecase/Film/List'
 import { Film } from '@/core/domain/domain/Film'
+import { FilmListInteractor } from '@/core/domain/application/Film'
 import { FilmListViewModel } from './FilmListViewModel'
 
-export class FilmListPresenter implements IFilmListOutputBoundary {
-  toViewModel(films: Film[]): FilmListViewModel[] {
-    return films.map((film: Film) => {
+export class FilmListPresenter implements IFilmListPresenter {
+  private readonly interactor: FilmListInteractor
+
+  constructor(interactor: FilmListInteractor) {
+    this.interactor = interactor
+  }
+
+  async execute(): Promise<FilmListViewModel[]> {
+    const res = await this.interactor.handle()
+    return res.results.map((film: Film) => {
       return {
         episodeId: Number(film.episodeId),
         title: String(film.title),

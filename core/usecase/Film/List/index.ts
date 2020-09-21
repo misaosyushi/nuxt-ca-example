@@ -1,2 +1,2 @@
 export { IFilmListUseCase } from './IFilmListUseCase'
-export { IFilmListOutputBoundary } from './IFilmListOutputBoundary'
+export { IFilmListPresenter } from './IFilmListPresenter'

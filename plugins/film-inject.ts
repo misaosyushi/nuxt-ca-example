@@ -5,26 +5,22 @@ import { FilmListPresenter } from '@/core/presenter/Film'
 
 declare module '@nuxt/types' {
   interface Context {
-    $filmListInteractor(): FilmListInteractor
     $filmListPresenter(): FilmListPresenter
   }
 }
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $filmListInteractor(): FilmListInteractor
     $filmListPresenter(): FilmListPresenter
   }
 }
 
 const myPlugin: Plugin = (context, inject) => {
   // Nuxtのcontextへのインジェクト
-  context.$filmListInteractor = () => new FilmListInteractor(new AxiosFilmRepository())
-  context.$filmListPresenter = () => new FilmListPresenter()
+  context.$filmListPresenter = () => new FilmListPresenter(new FilmListInteractor(new AxiosFilmRepository()))
 
   // Vueインスタンスへのインジェクト
-  inject('filmListInteractor', () => new FilmListInteractor(new AxiosFilmRepository()))
-  inject('filmListPresenter', () => new FilmListPresenter())
+  inject('filmListPresenter', () => new FilmListPresenter(new FilmListInteractor(new AxiosFilmRepository())))
 }
 
 export default myPlugin
