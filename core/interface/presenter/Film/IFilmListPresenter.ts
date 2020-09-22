@@ -1,4 +1,4 @@
-import { FilmListViewModel } from '@/core/presenter/Film/FilmListViewModel'
+import { FilmListViewModel } from '@/core/presenter/Film'
 
 export interface IFilmListPresenter {
   execute(): Promise<FilmListViewModel[]>

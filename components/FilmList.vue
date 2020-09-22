@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, SetupContext, watchEffect, ref } from '@vue/composition-api'
-import { FilmListViewModel } from '@/core/presenter/Film/FilmListViewModel'
+import { FilmListViewModel } from '@/core/presenter/Film'
 
 export default defineComponent({
   setup(_, context: SetupContext) {
